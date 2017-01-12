@@ -149,6 +149,13 @@ public class CameraActivity extends Fragment {
 	
         if (cameraParameters != null) {
 	    mCamera.setParameters(cameraParameters);
+			
+			//Set AutoFocus Mode if possible
+        cameraParameters = mCamera.getParameters();
+        if (cameraParameters.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+          cameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+          mCamera.setParameters(cameraParameters);
+        }
 
         }
 
